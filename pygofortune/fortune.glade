@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Generated with glade 3.20.0 -->
+<interface>
+  <requires lib="gtk+" version="3.20"/>
+  <object class="GtkAboutDialog" id="about">
+    <property name="can_focus">False</property>
+    <property name="type_hint">normal</property>
+    <property name="program_name">Fortune GUI made with PyGobject</property>
+    <property name="version">0.1</property>
+    <property name="copyright" translatable="yes">Copyright 2016 Vatsal Parekh</property>
+    <property name="comments" translatable="yes">A simple Front end to fortune command</property>
+    <property name="website">https://github.com/VatsalP/PyGObject-examples</property>
+    <property name="website_label" translatable="yes">Github Repository</property>
+    <property name="authors">Vatsal Parekh</property>
+    <property name="logo">fortune-cookie-icon.png</property>
+    <property name="license_type">bsd</property>
+    <child internal-child="vbox">
+      <object class="GtkBox">
+        <property name="can_focus">False</property>
+        <property name="orientation">vertical</property>
+        <property name="spacing">2</property>
+        <child internal-child="action_area">
+          <object class="GtkButtonBox">
+            <property name="can_focus">False</property>
+            <property name="layout_style">spread</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">False</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+        <child>
+          <placeholder/>
+        </child>
+      </object>
+    </child>
+  </object>
+  <object class="GtkAdjustment" id="adjustment1">
+    <property name="upper">100</property>
+    <property name="step_increment">1</property>
+    <property name="page_increment">10</property>
+  </object>
+  <object class="GtkTextBuffer" id="textbuffer1"/>
+  <object class="GtkWindow" id="Window">
+    <property name="can_focus">False</property>
+    <property name="title" translatable="yes">pygifortune</property>
+    <property name="resizable">False</property>
+    <property name="default_width">400</property>
+    <property name="default_height">100</property>
+    <property name="icon">fortune-cookie-icon.png</property>
+    <child>
+      <object class="GtkBox" id="Box">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="orientation">vertical</property>
+        <property name="spacing">5</property>
+        <property name="baseline_position">top</property>
+        <child>
+          <object class="GtkMenuBar" id="menu">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <child>
+              <object class="GtkMenuItem" id="help">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="margin_top">1</property>
+                <property name="label" translatable="yes">_Help</property>
+                <property name="use_underline">True</property>
+                <child type="submenu">
+                  <object class="GtkMenu">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <child>
+                      <object class="GtkImageMenuItem" id="menuabout">
+                        <property name="label">gtk-about</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="use_underline">True</property>
+                        <property name="use_stock">True</property>
+                        <signal name="activate" handler="help_about" swapped="no"/>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkTextView" id="text">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="vadjustment">adjustment1</property>
+            <property name="pixels_above_lines">10</property>
+            <property name="pixels_below_lines">10</property>
+            <property name="pixels_inside_wrap">10</property>
+            <property name="editable">False</property>
+            <property name="left_margin">10</property>
+            <property name="right_margin">10</property>
+            <property name="top_margin">10</property>
+            <property name="bottom_margin">10</property>
+            <property name="cursor_visible">False</property>
+            <property name="buffer">textbuffer1</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">1</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkSeparator">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">2</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="fortunebtn">
+            <property name="label" translatable="yes">Fortune</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <signal name="clicked" handler="on_fortunebtn_clicked" swapped="no"/>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">3</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+  </object>
+</interface>
