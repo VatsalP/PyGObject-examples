@@ -3,7 +3,7 @@
 
 To run any program you will need python module [PyGObject](https://wiki.gnome.org/action/show/Projects/PyGObject?action=show&redirect=PyGObject)
 ***
-+ #### pygofortune 
++ pygofortune 
 
 A frontend for [fortune](https://www.freebsd.org/cgi/man.cgi?query=fortune&sektion=6&manpath=FreeBSD+6.4-RELEASE).
 Needs fortune installed. 
@@ -16,7 +16,11 @@ On Arch by:
 
 `sudo pacman -S fortune-mod`
 ***
-+ #### pygocalc
++ pygocalc
 
 A simple calculator.
 ***
+
++ simpletexteditor
+
+A basic texteditor.
