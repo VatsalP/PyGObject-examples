@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import codecs
+import pathlib
 
 import gi
 gi.require_version('Gtk', '3.0')
@@ -28,6 +29,13 @@ class TextEditor(Gtk.Window):
         self.notsavetwo = self.builder.get_object("notsavetwo")
 
         self.currentfile = ""
+        self.path = pathlib.PurePath(self.currentfile)
+        if self.path.parts:
+            self.window.set_title(self.path.parts[-1])
+        else:
+            self.window.set_title("Untitled document")
+
+
         self.filechanged = False
         self.clipboard = Gtk.Clipboard.get(Gdk.SELECTION_CLIPBOARD)
 
@@ -40,13 +48,20 @@ class TextEditor(Gtk.Window):
 
             if self.response == Gtk.ResponseType.YES:
                 self.save(self.filesave)
-                self.textbuffer.set_text()
+                self.textbuffer.set_text("")
                 self.notsave.hide()
             else:
                 self.textbuffer.set_text("")
                 self.currentfile = ""
                 self.filechanged = False
                 self.notsave.hide()
+
+        self.path = pathlib.PurePath(self.currentfile)
+        if self.parts:
+            self.window.set_title(self.path.parts[-1])
+        else:
+            self.window.set_title("Untitled document")
+
 
     def file_open(self, button):
         if self.filechanged:
@@ -66,6 +81,12 @@ class TextEditor(Gtk.Window):
             self.file_to_open = self.fileopen.get_filename()
             if self.file_to_open:
                 self.currentfile = self.file_to_open
+                self.path = pathlib.PurePath(self.currentfile)
+                self.window.set_title(self.path.parts[-1])
+                if self.path.parts:
+                    self.window.set_title(self.path.parts[-1])
+                else:
+                    self.window.set_title("Untitled document")
                 with codecs.open(self.file_to_open,
                                  'r',
                                  encoding="utf-8") as f:
@@ -97,6 +118,11 @@ class TextEditor(Gtk.Window):
             self.file_to_save = self.filesave.get_filename()
             if self.file_to_save:
                 self.currentfile = self.file_to_save
+                self.path = pathlib.PurePath(self.currentfile)
+                if self.path.parts:
+                    self.window.set_title(self.path.parts[-1])
+                else:
+                    self.window.set_title("Untitled document")
                 with codecs.open(self.file_to_save,
                                  'w',
                                  encoding="utf-8") as f:
